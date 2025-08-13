@@ -1,0 +1,70 @@
+# PTPPing Configuration
+# Copy this file to config.toml and customize for your environment
+
+[ptp]
+# PTP interface name (e.g., "eth0", "enp0s31f6")
+interface = "eth0"
+# PTP domain (usually 0)
+domain = 0
+# PTP priority (lower = higher priority)
+priority = 128
+
+[audio]
+# Audio sample rate (Hz)
+sample_rate = 48000
+# Tone frequency (Hz) - must be integer divisor of sample_rate
+tone_frequency = 440
+# Burst duration (seconds)
+burst_duration = 0.1
+# Burst interval (seconds)
+burst_interval = 1.0
+# Audio device name (leave empty for default)
+device = ""
+# Loopback device name
+loopback_device = "hw:Loopback,0,0"
+
+[network]
+# Switch identification (used in InfluxDB tags)
+switch_name = "sw01"
+# Host identification
+host_name = "ws01"
+# VLAN ID (if applicable)
+vlan_id = 0
+
+[influxdb]
+# InfluxDB server URL
+url = "http://localhost:8086"
+# Database name
+database = "ptpping"
+# Organization (InfluxDB 2.x)
+organization = "myorg"
+# API token
+token = "your-influxdb-token-here"
+# Retention policy (days)
+retention_days = 30
+
+[grafana]
+# Grafana server URL
+url = "http://localhost:3000"
+# API key for dashboard provisioning
+api_key = "your-grafana-api-key-here"
+
+[logging]
+# Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+level = "INFO"
+# Log file path (leave empty for console only)
+file = ""
+# Maximum log file size (MB)
+max_size = 10
+# Number of backup log files
+backup_count = 5
+
+[monitoring]
+# Enable system metrics collection
+system_metrics = true
+# Metrics collection interval (seconds)
+metrics_interval = 60
+# Enable webhook notifications for Zoom/Teams calls
+webhook_enabled = false
+# Webhook URL
+webhook_url = ""

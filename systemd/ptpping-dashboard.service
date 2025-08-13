@@ -1,0 +1,17 @@
+[Unit]
+Description=PTPPing Dashboard Manager
+After=network.target grafana-server.service influxdb.service
+Wants=grafana-server.service influxdb.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/python3 /opt/ptpping/ptpping.py --role dashboard --config /etc/ptpping/config.toml
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
